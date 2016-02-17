@@ -256,10 +256,10 @@ public boolean onOptionsItemSelected (MenuItem item)
 {
    
 	
-  if (item.getItemId() == R.id.menu_instructions) {
+  /*if (item.getItemId() == R.id.menu_instructions) {
 	    	AlertDialog.Builder alert=new AlertDialog.Builder(this);
 	      	alert.setTitle(setupInstructionsStringTitle).setIcon(R.drawable.icon).setMessage(setupInstructionsString).setNeutralButton(OKText, null).show();
-	   }
+	   }*/
 	
   if (item.getItemId() == R.id.menu_about) {
 	  
@@ -445,9 +445,9 @@ private void setPreferencesMatrix() //here is where we read the shared preferenc
 {
  SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);    
  
- matrix_model = Integer.valueOf(prefs.getString(   //the selected RGB LED Matrix Type
+/* matrix_model = Integer.valueOf(prefs.getString(   //the selected RGB LED Matrix Type
 	        resources.getString(R.string.selected_matrix),
-	        resources.getString(R.string.matrix_default_value))); 
+	        resources.getString(R.string.matrix_default_value))); */
  
  matrix_model = 1;
  
@@ -506,7 +506,7 @@ private void setPreferencesMatrix() //here is where we read the shared preferenc
 	//**************************************
 	
 	 //***** we're hard setting the LED matrix if it's a pixel unit with demo firmware
-	if (pixelFirmware.substring(0,6).equals("PIXLD6")) {  
+if (pixelFirmware.substring(0,6).equals("PIXLD6")) {  
 		 KIND = ioio.lib.api.RgbLedMatrix.Matrix.SEEEDSTUDIO_64x64;
 		 demoPIXEL = 2;
 		 frame_ = new short [KIND.width * KIND.height];
@@ -669,7 +669,7 @@ private void showNotFound() {
 	@Override
 	public void disconnected() {   			
 			Log.i(LOG_TAG, "IOIO disconnected");
-			setTextDisconnected("Not Connected");
+			setTextDisconnected("Connecting...");
 			
 	}
 	

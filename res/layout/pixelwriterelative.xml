@@ -47,6 +47,6 @@
         android:layout_alignRight="@+id/pixelWriteButton"
         android:layout_below="@+id/pixelBackButton"
         android:background="@color/red"
-        android:text="Not Connected" />
+        android:text="Connecting..." />
 
 </RelativeLayout>

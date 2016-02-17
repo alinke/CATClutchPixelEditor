@@ -120,13 +120,12 @@ public class PixelArtEditor extends PApplet implements TouchListener, Drawer {
 	
 	public void figureOutOrientation() {
 		if (isHorizontal()) {
-			setRequestedOrientation(6 /*ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE*/);
+			//setRequestedOrientation(6 /*ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE*/);
+			setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 		} else {
 			setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		}
 	}
-	
-	
 	
 	@Override
 	public void setup() {
@@ -676,7 +675,7 @@ public class PixelArtEditor extends PApplet implements TouchListener, Drawer {
 
 	
 	public void clear() {
-		art.rectangle(0, 0, art.width-1, art.height-1, Color.TRANSPARENT);
+		art.rectangle(0, 0, art.width-1, art.height-1, Color.TRANSPARENT);  //TO DO fix this bug later, doesn't erase everything
 		buttonbar.updateFromState();
 	}
 	

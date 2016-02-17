@@ -64,7 +64,7 @@
     <string name="about_title">About CAT Clutch Editor</string>
     <string name="about_button_market">Market</string>
     <string name="about_button_ok">Ok</string>
-    <string name="about">CAT Clutch Editor is adapted from the original Pixelesque app made by &lt;a href=&quot;http://rjmarsan.com&quot;&gt;RJ Marsan&lt;/a&gt;. A big thanks to RJ! It\'s 100% ad &amp; cost free, and &lt;a href=&quot;http://github.com/rjmarsan/Pixelesque&quot;&gt;open source&lt;/a&gt;.</string>
+    <string name="about">CAT Clutch Editor is adapted from the original Pixelesque app made by &lt;a href=&quot;http://rjmarsan.com&quot;&gt;RJ Marsan&lt;/a&gt;. A big thanks to RJ for allowing us to use  his code!</string>
 
 	 <string name="menu_about_title">About</string> 
     <string name="menu_about_summary">http://catclutch.com\n\nDesigned by Creative Arts and Technology</string>

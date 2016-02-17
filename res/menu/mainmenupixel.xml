@@ -12,11 +12,13 @@ android:title="@string/menu_about_title"
 android:icon="@drawable/ic_menu_info_details"
 />
 
+<!--  
+
 <item android:id="@+id/menu_instructions"
 android:title="@string/menu_instructions_title"
 android:icon="@drawable/ic_menu_database"
 />
-
+-->
 
 
 </menu>
