@@ -71,7 +71,7 @@ public class PIXELWrite extends IOIOActivity   {
 	private Context context;
 
   	private int deviceFound = 0;
-	private ConnectTimer connectTimer; 
+	//private ConnectTimer connectTimer; 
 	int appAlreadyStarted = 0;
 	private Button goBackButton;
 	private Button writeButton;
@@ -120,8 +120,8 @@ public class PIXELWrite extends IOIOActivity   {
         
         PixelStatusText_ = (TextView) findViewById(R.id.PixelStatusText);
 		
-        connectTimer = new ConnectTimer(30000,5000); //pop up a message if it's not connected by this timer
- 		connectTimer.start(); //this timer will pop up a message box if the device is not found
+        //connectTimer = new ConnectTimer(30000,5000); //pop up a message if it's not connected by this timer
+ 		//connectTimer.start(); //this timer will pop up a message box if the device is not found
 		
  		addListenerBackButton();
  	    addListenerWriteButton();
@@ -423,7 +423,7 @@ private void setPreferences() //here is where we read the shared preferences int
     	 }
  }
  
- //***** we're hard setting the LED matrix if it's a pixel unit with demo firmware
+ /*//***** we're hard setting the LED matrix if it's a pixel unit with demo firmware
 	if (pixelFirmware.substring(0,6).equals("PIXLD3")) {  
 		 KIND = ioio.lib.api.RgbLedMatrix.Matrix.SEEEDSTUDIO_32x32;
 		 demoPIXEL = 1;
@@ -438,93 +438,15 @@ private void setPreferences() //here is where we read the shared preferences int
 	}
 	//**************************************
 	//for a regular unit, the firmware will be PIXLXXXX where XXXX is something like 0006 
-	
+*/	
 	 frame_ = new short [KIND.width * KIND.height];
 	 BitmapBytes = new byte[KIND.width * KIND.height *2]; //512 * 2 = 1024 or 1024 * 2 = 2048
 
  }
 
-private void setPreferencesMatrix() //here is where we read the shared preferences into variables
-{
- SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);    
- 
-/* matrix_model = Integer.valueOf(prefs.getString(   //the selected RGB LED Matrix Type
-	        resources.getString(R.string.selected_matrix),
-	        resources.getString(R.string.matrix_default_value))); */
- 
- matrix_model = 1;
- 
- if (demoPIXEL == 0) { //otherwise we will set this from ioiosetup once we know which matrix from teh firmware we need to default to
- 
-	 switch (matrix_model) {  //get this from the preferences
-	 case 0:
-		 KIND = ioio.lib.api.RgbLedMatrix.Matrix.SEEEDSTUDIO_32x16;
-		 break;
-	 case 1:
-		 KIND = ioio.lib.api.RgbLedMatrix.Matrix.ADAFRUIT_32x16;
-		 break;
-	 case 2:
-		 KIND = ioio.lib.api.RgbLedMatrix.Matrix.SEEEDSTUDIO_32x32_NEW; //v1
-		 break;
-	 case 3:
-		 KIND = ioio.lib.api.RgbLedMatrix.Matrix.SEEEDSTUDIO_32x32; //v2
-		 break;
-	 case 4:
-		 KIND = ioio.lib.api.RgbLedMatrix.Matrix.SEEEDSTUDIO_64x32; 
-		 break;
-	 case 5:
-		 KIND = ioio.lib.api.RgbLedMatrix.Matrix.SEEEDSTUDIO_32x64; 
-		 break;	 
-	 case 6:
-		 KIND = ioio.lib.api.RgbLedMatrix.Matrix.SEEEDSTUDIO_2_MIRRORED; 
-		 break;	 	 
-	 case 7:
-		 KIND = ioio.lib.api.RgbLedMatrix.Matrix.SEEEDSTUDIO_4_MIRRORED;
-		 break;
-	 case 8:
-		 KIND = ioio.lib.api.RgbLedMatrix.Matrix.SEEEDSTUDIO_128x32; //horizontal
-		 break;	 
-	 case 9:
-		 KIND = ioio.lib.api.RgbLedMatrix.Matrix.SEEEDSTUDIO_32x128; //vertical mount
-		 break;	 
-	 case 10:
-		 KIND = ioio.lib.api.RgbLedMatrix.Matrix.SEEEDSTUDIO_64x64;
-		 break;	 	 		 
-	 default:	    		 
-		 KIND = ioio.lib.api.RgbLedMatrix.Matrix.SEEEDSTUDIO_32x32; //v2 as the default
-	 }
-	 
-	 frame_ = new short [KIND.width * KIND.height];
-	 BitmapBytes = new byte[KIND.width * KIND.height *2]; //512 * 2 = 1024 or 1024 * 2 = 2048
- }
- else {
- 
- //***** we're hard setting the LED matrix if it's a pixel unit with demo firmware
-	if (pixelFirmware.substring(0,6).equals("PIXLD3")) {  
-		 KIND = ioio.lib.api.RgbLedMatrix.Matrix.SEEEDSTUDIO_32x32;
-		 demoPIXEL = 1;
-		 frame_ = new short [KIND.width * KIND.height];
-		 BitmapBytes = new byte[KIND.width * KIND.height *2]; //512 * 2 = 1024 or 1024 * 2 = 2048
-	}
-	//**************************************
-	
-	 //***** we're hard setting the LED matrix if it's a pixel unit with demo firmware
-if (pixelFirmware.substring(0,6).equals("PIXLD6")) {  
-		 KIND = ioio.lib.api.RgbLedMatrix.Matrix.SEEEDSTUDIO_64x64;
-		 demoPIXEL = 2;
-		 frame_ = new short [KIND.width * KIND.height];
-		 BitmapBytes = new byte[KIND.width * KIND.height *2]; //512 * 2 = 1024 or 1024 * 2 = 2048
-	}
-	//**************************************
-	//for a regular unit, the firmware will be PIXLXXXX where XXXX is something like 0006 
- }    
- 
-// frame_ = new short [KIND.width * KIND.height];
-// BitmapBytes = new byte[KIND.width * KIND.height *2]; //512 * 2 = 1024 or 1024 * 2 = 2048
 
-}
 
-public class ConnectTimer extends CountDownTimer
+/*public class ConnectTimer extends CountDownTimer
 	{
 
 		public ConnectTimer(long startTime, long interval)
@@ -545,12 +467,12 @@ public class ConnectTimer extends CountDownTimer
 		public void onTick(long millisUntilFinished)				{
 			//not used
 		}
-	}
+	}*/
 
-private void showNotFound() {	
+/*private void showNotFound() {	
 	AlertDialog.Builder alert=new AlertDialog.Builder(this);
 	alert.setTitle(getResources().getString(R.string.notFoundString)).setIcon(R.drawable.icon).setMessage(getResources().getString(R.string.bluetoothPairingString)).setNeutralButton(getResources().getString(R.string.OKText), null).show();	
-}
+}*/
 	
     ///********** IOIO Part of the Code ************************
     class IOIOThread extends BaseIOIOLooper { 
@@ -560,11 +482,11 @@ private void showNotFound() {
   		@Override
   		protected void setup() throws ConnectionLostException {
   			//matrix_ = ioio_.openRgbLedMatrix(KIND);
-  			deviceFound = 1; //if we went here, then we are connected over bluetooth or USB
-  			connectTimer.cancel(); //we can stop this since it was found
+  			//deviceFound = 1; //if we went here, then we are connected over bluetooth or USB
+  			//connectTimer.cancel(); //we can stop this since it was found
   			
   		
-  			 if (AutoSelectPanel_ && pixelHardwareID.substring(0,4).equals("PIXL") && !pixelHardwareID.substring(4,5).equals("0")) { //only go here if we have a firmware that is set to auto-detect, otherwise we can skip this
+  			/* if (AutoSelectPanel_ && pixelHardwareID.substring(0,4).equals("PIXL") && !pixelHardwareID.substring(4,5).equals("0")) { //only go here if we have a firmware that is set to auto-detect, otherwise we can skip this
  	  			runOnUiThread(new Runnable() 
  	  			{
  	  			   public void run() 
@@ -581,11 +503,11 @@ private void showNotFound() {
  	  			      
  	  			   }
  	  			}); 
- 			}
+ 			}*/
  		   
- 		   else { //we didn't auto-detect so just go the normal way
+ 		 //  else { //we didn't auto-detect so just go the normal way
  			  matrix_ = ioio_.openRgbLedMatrix(KIND);
- 		   }
+ 		  // }
   			//**** let's get IOIO version info for the About Screen ****
   			pixelFirmware = ioio_.getImplVersion(v.APP_FIRMWARE_VER);
   			pixelBootloader = ioio_.getImplVersion(v.BOOTLOADER_VER);
@@ -593,7 +515,7 @@ private void showNotFound() {
   			IOIOLibVersion = ioio_.getImplVersion(v.IOIOLIB_VER);
   			//**********************************************************
   			
-  			if (pixelFirmware.substring(0,6).equals("PIXLD3")) {  
+  			/*if (pixelFirmware.substring(0,6).equals("PIXLD3")) {  
   				 demoPIXEL = 1;
   			}
   			//**************************************
@@ -603,7 +525,7 @@ private void showNotFound() {
   				 demoPIXEL = 2;
   			}
   			//**************************************
-  			
+*/  			
   			 setText("Connected");
   			 
   			 //TO DO: Fix this later, having this here causing a disconnect on the first connection, not sure why
