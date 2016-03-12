@@ -148,6 +148,7 @@ public class PIXELWrite extends IOIOActivity   {
     public void addListenerWriteButton() {
     	
     	writeButton = (Button) findViewById(R.id.pixelWriteButton);
+    	//writeButton.setVisibility(View.INVISIBLE); //to do you can uncomment out if need kiosk mode app
     	
     	if (PIXELWriteImmediately_ == false) { //still show button even if we have a demo unit, we'll show a message to the user if they clicked it that this is a demo unit that normally would support writing
 	    	
@@ -310,6 +311,8 @@ private void setPreferences() //here is where we read the shared preferences int
 	        resources.getString(R.string.matrix_default_value))); 
  
  PIXELWriteImmediately_ = prefs.getBoolean("pref_pixelWriteImmediate", true);
+ 
+ //PIXELWriteImmediately_ = false; ///TO DO uncomment out this line, it's for Kiosk mode
  
  matrix_model = 1; //TO DO fix this later
  
@@ -583,10 +586,6 @@ private void showNotFound() {
  		   else { //we didn't auto-detect so just go the normal way
  			  matrix_ = ioio_.openRgbLedMatrix(KIND);
  		   }
-  			
-  			
-  			
-  			
   			//**** let's get IOIO version info for the About Screen ****
   			pixelFirmware = ioio_.getImplVersion(v.APP_FIRMWARE_VER);
   			pixelBootloader = ioio_.getImplVersion(v.BOOTLOADER_VER);
