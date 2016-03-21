@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="com.catclutch.pixelesque"
-      android:versionCode="15"
-      android:versionName="2.5">
+      android:versionCode="17"
+      android:versionName="2.7">
     <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="11" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
     <application android:icon="@drawable/icon" android:label="@string/app_name" android:hardwareAccelerated="true"
     			android:theme="@style/Theme.Pixelesque">
