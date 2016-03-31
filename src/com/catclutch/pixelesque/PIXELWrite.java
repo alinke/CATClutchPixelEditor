@@ -2,6 +2,8 @@ package com.catclutch.pixelesque;
 
 import java.nio.ByteBuffer;
 
+import com.google.android.apps.analytics.GoogleAnalyticsTracker;
+
 import ioio.lib.api.IOIO.VersionType;
 import ioio.lib.api.exception.ConnectionLostException;
 import ioio.lib.util.BaseIOIOLooper;
@@ -32,6 +34,7 @@ import android.graphics.Bitmap.Config;
 import android.widget.Button;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.google.android.apps.analytics.GoogleAnalyticsTracker;
 
 @SuppressLint("ResourceAsColor")
 public class PIXELWrite extends IOIOActivity   {
@@ -80,6 +83,7 @@ public class PIXELWrite extends IOIOActivity   {
 	private boolean PIXELWriteImmediately_;
 	private int demoPIXEL = 0; //0 means normal pixel, 1 means demo 32 pixel (no writing), 2 means demo 64 pixel (no writing)
 	private boolean AutoSelectPanel_ = true;
+	private GoogleAnalyticsTracker tracker;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -120,6 +124,10 @@ public class PIXELWrite extends IOIOActivity   {
         
         PixelStatusText_ = (TextView) findViewById(R.id.PixelStatusText);
 		
+        //******* Google Analytics Tracking Code *******  
+        tracker = GoogleAnalyticsTracker.getInstance();
+        //**********************************************
+        
         //connectTimer = new ConnectTimer(30000,5000); //pop up a message if it's not connected by this timer
  		//connectTimer.start(); //this timer will pop up a message box if the device is not found
 		
@@ -548,7 +556,12 @@ private void setPreferences() //here is where we read the shared preferences int
   			}
   			//**************************************
 */  		 
-			if (pixelHardwareID.substring(0,4).equals("PIXL") && PIXELWriteImmediately_ == true && demoPIXEL == 0) {  //checks if we have a v2 pixel and preferences tells us to write immediatly, we'll add a mod here for a demo firmware
+  		   ///****** Google Analytics Tracking Code *****////
+	  		  tracker.start("UA-75813302-3", 30, context);
+	          //Track some usage (screens and dialogs map well to pageviews):
+	          tracker.trackPageView("/PIXELWrite");
+  			 
+  			 if (pixelHardwareID.substring(0,4).equals("PIXL") && PIXELWriteImmediately_ == true && demoPIXEL == 0) {  //checks if we have a v2 pixel and preferences tells us to write immediatly, we'll add a mod here for a demo firmware
    		        
 						try {
 								int fps = 100; //it's a dummy since this is a still image but PIXEL needs an fps regardless
